@@ -13,13 +13,12 @@ import java.util.UUID;
 
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name="PRODUCT")
 public class Product implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 8429895232221464470L;
 
     @Id
     @Column(name="ID")
@@ -58,9 +57,10 @@ public class Product implements Serializable {
     @Column(name="VIEWS")
     private Integer views;
 
-    /*public Product() {
-        this.code = UUID.randomUUID().toString().substring(36).toUpperCase();
-    }*/
+    public Product(){
+        this.code ="PRD" + UUID.randomUUID().toString().substring(26).toUpperCase();
+    }
+
     @Override
     public String toString() {
         return "Product{" +

@@ -16,7 +16,7 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    final private static String PRODUCT_SUCCESS_MESSAGE = "Product does not exist in the System";
+    final private static String PRODUCT_SUCCESS_MESSAGE = "Product deleted Successfully";
     final private static String PRODUCT_ERROR_MESSAGE = "Product does not exist in the System";
 
     @Override
