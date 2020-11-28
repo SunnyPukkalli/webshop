@@ -5,7 +5,9 @@ import com.examples.webshop.cart.model.Cart;
 import com.examples.webshop.cart.persistence.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CartServiceImpl implements CartService {
 
     @Autowired

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -31,7 +30,6 @@ public class UserController {
 
     @GetMapping("/user/{user_id}")
     public ResponseEntity<User> getUserById(@PathVariable(name="user_id") String id){
-
         try {
             User user = userService.fetchUser(Integer.valueOf(id));
             return new ResponseEntity<>(user,HttpStatus.OK);
@@ -47,7 +45,6 @@ public class UserController {
 
     @DeleteMapping("/user/{user_id}")
     public ResponseEntity<String> deleteUser(@PathVariable(name="user_id") String id){
-
         try{
             String result = userService.deleteUser(Integer.valueOf(id));
             return new ResponseEntity<>(result,HttpStatus.OK);

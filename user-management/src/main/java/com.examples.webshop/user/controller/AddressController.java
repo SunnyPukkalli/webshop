@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/addresses")
 public class AddressController {
 
     @Autowired
@@ -30,7 +31,6 @@ public class AddressController {
 
     @GetMapping("/address/{address_id}")
     public ResponseEntity<Address> getAddressById(@PathVariable(name="address_id") String id){
-
         try {
             Address address = addressService.fetchAddress(Integer.valueOf(id));
             return new ResponseEntity<>(address,HttpStatus.OK);
@@ -42,7 +42,6 @@ public class AddressController {
     @PatchMapping("/address/{address_id}")
     public ResponseEntity<Address> updateAddress(@RequestBody Address address , @PathVariable(name="address_id") String id){
         // TODO: Add logic to check if address exists or do you want to create new or error out ?
-
         return new ResponseEntity<>(addressService.createOrUpdateAddress(address),HttpStatus.OK);
     }
 

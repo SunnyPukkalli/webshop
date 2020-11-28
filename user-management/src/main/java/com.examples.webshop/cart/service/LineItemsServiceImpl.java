@@ -4,9 +4,11 @@ import com.examples.webshop.cart.exception.LineItemsNotFoundException;
 import com.examples.webshop.cart.model.LineItems;
 import com.examples.webshop.cart.persistence.LineItemsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class LineItemsServiceImpl implements LineItemsService {
 
     @Autowired

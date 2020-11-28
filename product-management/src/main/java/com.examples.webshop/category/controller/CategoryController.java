@@ -25,14 +25,13 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @GetMapping("/category")
-    public ResponseEntity<List<Category>> getAllCategories(){
-        return new ResponseEntity<>(categoryService.fetchAllCategories(),HttpStatus.OK);
+    @PostMapping("/category")
+    public ResponseEntity<Category> createCategory(@RequestBody Category category){
+        return new ResponseEntity<>(categoryService.createOrUpdateCategory(category),HttpStatus.CREATED);
     }
 
     @GetMapping("/category/{categoryId}")
     public ResponseEntity<Category> getCategory(@PathVariable String categoryId){
-
         try {
             Category category = categoryService.fetchCategory(Integer.valueOf(categoryId));
             return new ResponseEntity<>(category, HttpStatus.OK);
@@ -41,19 +40,13 @@ public class CategoryController {
         }
     }
 
-    @PostMapping("/category")
-    public ResponseEntity<Category> createCategory(@RequestBody Category category){
-        return new ResponseEntity<>(categoryService.createOrUpdateCategory(category),HttpStatus.CREATED);
-    }
-
     @PatchMapping("/category/{categoryId}")
-    public ResponseEntity<Category> updateCategory(@PathVariable Category category){
+    public ResponseEntity<Category> updateCategory(@RequestBody Category category,@PathVariable String categoryId){
         return new ResponseEntity<>(categoryService.createOrUpdateCategory(category),HttpStatus.OK);
     }
 
     @DeleteMapping("/category/{categoryId}")
     public ResponseEntity<String> deleteCategory(@PathVariable String categoryId){
-
         try{
             String result = categoryService.deleteCategory(Integer.valueOf(categoryId));
             return new ResponseEntity<>(result,HttpStatus.OK);
@@ -61,4 +54,10 @@ public class CategoryController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
     }
+
+    @GetMapping("/category")
+    public ResponseEntity<List<Category>> getAllCategories(){
+        return new ResponseEntity<>(categoryService.fetchAllCategories(),HttpStatus.OK);
+    }
+
 }

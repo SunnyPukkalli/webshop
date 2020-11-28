@@ -31,7 +31,6 @@ public class CartController {
     @Autowired
     private LineItemsService lineItemsService;
 
-
     @PostMapping("/cart")
     public ResponseEntity<Cart> createCart(@RequestBody Cart cart) {
         return new ResponseEntity<>(cartService.createOrUpdateCart(cart), HttpStatus.CREATED);
@@ -59,7 +58,6 @@ public class CartController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
     }
-
 
     @PostMapping("/cart/lineItems")
     public ResponseEntity<List<LineItems>> createLineItems(@RequestBody List<LineItems> lineItems) {

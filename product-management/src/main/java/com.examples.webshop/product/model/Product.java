@@ -9,11 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.UUID;
 
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name="PRODUCT")
 public class Product implements Serializable {
@@ -56,10 +56,6 @@ public class Product implements Serializable {
 
     @Column(name="VIEWS")
     private Integer views;
-
-    public Product(){
-        this.code ="PRD" + UUID.randomUUID().toString().substring(26).toUpperCase();
-    }
 
     @Override
     public String toString() {

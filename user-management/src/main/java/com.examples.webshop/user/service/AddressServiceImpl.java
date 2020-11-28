@@ -5,9 +5,11 @@ import com.examples.webshop.user.model.Address;
 import com.examples.webshop.user.persistence.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class AddressServiceImpl implements AddressService {
 
     private static final String ADDRESS_NOT_FOUND_MESSAGE = "Address does not exist in the system";

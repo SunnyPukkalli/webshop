@@ -24,26 +24,23 @@ public class ProductController {
     private ProductService productService;
 
 
-    @PostMapping("/product/")
+    @PostMapping("/product")
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {
         return  new ResponseEntity<>(product, HttpStatus.CREATED);
     }
 
     @GetMapping("/product/{product_id}")
     public ResponseEntity<Product> getProducts(@PathVariable String product_id) {
-
         try{
             Product product = productService.fetchProduct(Integer.valueOf(product_id));
             return  new ResponseEntity<>(product, HttpStatus.OK);
         } catch (ProductNotFoundException exception) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-
     }
 
     @PatchMapping("/product/{product_id}")
     public ResponseEntity<Product> updateProduct(@RequestBody Product product , @PathVariable String product_id) {
-
         try{
             Product retrievedProduct = productService.fetchProduct(Integer.valueOf(product_id));
             return  new ResponseEntity<>(product, HttpStatus.OK);
@@ -55,7 +52,6 @@ public class ProductController {
 
     @DeleteMapping("/product/{product_id}")
     public ResponseEntity<String> deleteProduct(@PathVariable String product_id) {
-
         try{
             String result = productService.deleteProduct(Integer.valueOf(product_id));
             return  new ResponseEntity<>(result, HttpStatus.OK);
